@@ -1,0 +1,14 @@
+# Intellij
+.idea/
+*.iml
+
+# Mac
+.DS_Store
+
+# Maven
+target
+
+# Web
+dist
+node_modules/
+npm-debug.log
