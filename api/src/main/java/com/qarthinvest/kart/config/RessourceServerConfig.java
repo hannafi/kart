@@ -19,14 +19,10 @@ public class RessourceServerConfig extends ResourceServerConfigurerAdapter {
                 .and()
                 .requestMatchers()
                 .antMatchers(
-                        Constants.PUBLIC_API_ROOT + "/**",
                         Constants.ADMIN_API_ROOT + "/**",
                         Constants.COMPANY_API_ROOT + "/**",
                         Constants.COMMERCIAL_API_ROOT + "/**"
                 )
-                .and()
-                .authorizeRequests()
-                .antMatchers(Constants.PUBLIC_API_ROOT + "/**").permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers(Constants.ADMIN_API_ROOT + "/**").hasAuthority(RoleType.ROLE_ADMIN.name())

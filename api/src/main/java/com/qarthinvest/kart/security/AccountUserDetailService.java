@@ -32,7 +32,7 @@ public class AccountUserDetailService implements UserDetailsService {
         RoleType roleType = RoleType.valueOf(found.getRole());
         Collection<GrantedAuthority> authorityList = Collections.singletonList(new SimpleGrantedAuthority(roleType.name()));
         return new org.springframework.security.core.userdetails.User(
-                found.getId(),
+                found.getUsername(),
                 found.getPassword(),
                 found.isEnabled(),
                 true,
