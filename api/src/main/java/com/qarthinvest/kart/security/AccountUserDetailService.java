@@ -2,6 +2,7 @@ package com.qarthinvest.kart.security;
 
 import com.qarthinvest.kart.domain.Account;
 import com.qarthinvest.kart.repository.AccountRepository;
+import com.qarthinvest.kart.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,7 +29,12 @@ public class AccountUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         Account found = accountRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("No local user with username " + username));
+
+        found.setLastLoginDate(Utils.utcDateTime());
+        accountRepository.save(found);
+
         RoleType roleType = RoleType.valueOf(found.getRole());
         Collection<GrantedAuthority> authorityList = Collections.singletonList(new SimpleGrantedAuthority(roleType.name()));
         return new org.springframework.security.core.userdetails.User(

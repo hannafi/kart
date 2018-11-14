@@ -16,13 +16,13 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorisationServeConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorisationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
     private final AccountUserDetailService accountUserDetailService;
 
     @Autowired
-    public AuthorisationServeConfig(AuthenticationConfiguration authenticationConfiguration, AccountUserDetailService accountUserDetailService) throws Exception {
+    public AuthorisationServerConfig(AuthenticationConfiguration authenticationConfiguration, AccountUserDetailService accountUserDetailService) throws Exception {
         this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
         this.accountUserDetailService = accountUserDetailService;
     }
@@ -37,11 +37,11 @@ public class AuthorisationServeConfig extends AuthorizationServerConfigurerAdapt
 
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("kart")
-                .authorizedGrantTypes("password", "refresh_token")
+                .withClient("admin")
+                .authorizedGrantTypes("password")
                 .accessTokenValiditySeconds(3600)
-                .secret("{noop}kart")
-                .scopes("read", "write");
+                .secret("{noop}qiQu$3")
+                .scopes("admin");
     }
 
     @Bean

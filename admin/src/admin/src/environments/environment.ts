@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  tokenKey: '_kart_admin_t_',
+  clientId: 'admin',
+  clientSecret: 'qiQu$3',
+  tokenEndpoint: 'http://localhost:8080/oauth/token',
+  adminEndpoint: 'http://localhost:8080/admin',
 };
 
 /*

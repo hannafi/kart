@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #loginForm="ngForm">
+      <mat-form-field class="field-full-width">
+        <mat-icon matSuffix>perm_identity</mat-icon>
+        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+        <mat-error>
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <mat-icon matSuffix="">lock</mat-icon>
+        <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+        <mat-error>
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="login()" color="primary" [disabled]="!loginForm.form.valid">Login</button>
+  </mat-card-actions>
+</mat-card>
+

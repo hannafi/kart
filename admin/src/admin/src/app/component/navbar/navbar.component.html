@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="app-navbar">
+  <mat-toolbar-row>
+
+    <span>Kart Admin</span>
+
+    <span class="navbar-spacer"></span>
+    <mat-chip-list *ngIf="principal$ | async as principal">
+      <mat-chip>
+        <mat-icon>account_circle</mat-icon>
+        {{principal.email}}
+      </mat-chip>
+      <mat-chip>
+        <mat-icon>lock_open</mat-icon>
+        {{principal.lastLoginDate | date:'d/M/yy H:mm':'UTC'}}
+      </mat-chip>
+    </mat-chip-list>
+
+    <span class="navbar-spacer"></span>
+    <div *ngIf="principal$ | async as principal">
+      <button mat-button aria-label="Dashboard" matTooltip="Dashboard" routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon>
+      </button>
+      <button mat-button aria-label="Companies" matTooltip="Companies" routerLink="/companies">
+        <mat-icon>location_city</mat-icon>
+      </button>
+      <button mat-button aria-label="Logout" matTooltip="Logout" (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </div>
+
+
+  </mat-toolbar-row>
+</mat-toolbar>

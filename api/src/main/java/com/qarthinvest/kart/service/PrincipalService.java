@@ -31,8 +31,8 @@ public class PrincipalService implements IPrincipalService {
 
     @Override
     public AdminProxy getAdminPrincipal(Principal principal) {
-        LOGGER.info("Fetching Admin Principal with id {}", principal.getName());
-        return adminRepository.findById(principal.getName())
+        LOGGER.info("Fetching Admin Principal with username {}", principal.getName());
+        return adminRepository.findByUsername(principal.getName())
                 .map(AdminProxy::new)
                 .orElseThrow(() -> new IllegalStateException("Principal admin with id " + principal.getName() + " not found!"));
     }
@@ -40,7 +40,7 @@ public class PrincipalService implements IPrincipalService {
     @Override
     public CompanyProxy getCompanyPrincipal(Principal principal) {
         LOGGER.info("Fetching Company Principal with id {}", principal.getName());
-        return companyRepository.findById(principal.getName())
+        return companyRepository.findByUsername(principal.getName())
                 .map(CompanyProxy::new)
                 .orElseThrow(() -> new IllegalStateException("Principal company with id " + principal.getName() + " not found!"));
     }
@@ -48,7 +48,7 @@ public class PrincipalService implements IPrincipalService {
     @Override
     public CommercialProxy getCommercialPrincipal(Principal principal) {
         LOGGER.info("Fetching Commercial Principal with id {}", principal.getName());
-        return commercialRepository.findById(principal.getName())
+        return commercialRepository.findByUsername(principal.getName())
                 .map(CommercialProxy::new)
                 .orElseThrow(() -> new IllegalStateException("Principal commercial with id " + principal.getName() + " not found!"));
     }

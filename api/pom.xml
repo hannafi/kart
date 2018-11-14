@@ -17,7 +17,7 @@
 
     <properties>
         <flyway>5.2.0</flyway>
-        <spring.security.oauth2>2.1.0.RC1</spring.security.oauth2>
+        <spring.security.oauth2>2.1.0.RELEASE</spring.security.oauth2>
     </properties>
 
     <dependencies>
