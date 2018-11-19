@@ -1,38 +1,49 @@
 import {NgModule} from '@angular/core';
 import {
   MatButtonModule,
-  MatCardModule, MatChipsModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatGridListModule,
   MatIconModule,
-  MatInputModule, MatListModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
   MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
   MatSnackBarModule,
-  MatToolbarModule, MatTooltipModule
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
+import {LayoutModule} from '@angular/cdk/layout';
 
 @NgModule({
-  imports: [
-    MatToolbarModule,
-    MatIconModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatTooltipModule,
-    MatListModule,
-    MatChipsModule
-  ],
   exports: [
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
     MatTooltipModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    CdkTableModule,
+    MatGridListModule,
+    MatMenuModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatSortModule
   ],
 })
 export class AppMaterialModule {

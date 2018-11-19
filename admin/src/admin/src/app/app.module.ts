@@ -11,12 +11,11 @@ import {environment} from '../environments/environment';
 import {LoginComponent} from './component/login/login.component';
 import {DashboardComponent} from './component/dashboard/dashboard.component';
 import {FormsModule} from '@angular/forms';
-import {NavbarComponent} from './component/navbar/navbar.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { NgProgressModule } from '@ngx-progressbar/core';
-import { NgProgressHttpModule } from '@ngx-progressbar/http';
+import {NgProgressModule} from '@ngx-progressbar/core';
+import {NgProgressHttpModule} from '@ngx-progressbar/http';
 import {TokenInterceptor} from './security/token.interceptor';
-import { CompaniesComponent } from './component/companies/companies.component';
+import {CompaniesComponent} from './component/companies/companies.component';
 
 
 @NgModule({
@@ -24,8 +23,7 @@ import { CompaniesComponent } from './component/companies/companies.component';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    NavbarComponent,
-    CompaniesComponent
+    CompaniesComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +35,7 @@ import { CompaniesComponent } from './component/companies/companies.component';
     HttpClientModule,
     NgProgressModule.forRoot(),
     NgProgressHttpModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     {
@@ -48,4 +46,5 @@ import { CompaniesComponent } from './component/companies/companies.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

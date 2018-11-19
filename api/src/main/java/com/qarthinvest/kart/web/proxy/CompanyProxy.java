@@ -11,6 +11,7 @@ public class CompanyProxy {
     private String vat;
     private String phone;
     private String email;
+    private boolean enabled;
     private LocalDateTime creationDate;
     private LocalDateTime lastLoginDate;
 
@@ -20,6 +21,7 @@ public class CompanyProxy {
         this.vat = company.getVat();
         this.phone = company.getPhone();
         this.email = company.getEmail();
+        this.enabled = company.isEnabled();
         this.creationDate = company.getCreationDate();
         this.lastLoginDate = company.getLastLoginDate();
     }
@@ -52,4 +54,7 @@ public class CompanyProxy {
         return lastLoginDate;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
 }
