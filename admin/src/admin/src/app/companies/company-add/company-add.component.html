@@ -1,0 +1,61 @@
+<div fxFill fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="30" fxFlex.md="50" fxFlex.xs="80">
+    <mat-card-header>
+      <mat-card-title>Add Company</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #companyForm="ngForm">
+
+        <mat-form-field fxFill>
+          <input matInput placeholder="Company Name" [(ngModel)]="company.name" name="name" required>
+          <mat-error>
+            Company name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill>
+          <input matInput placeholder="Company Vat" [(ngModel)]="company.vat" name="vat" required>
+          <mat-error>
+            Company vat is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill>
+          <input matInput placeholder="Company Phone" [(ngModel)]="company.phone" name="phone" required>
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error>
+            Company phone is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill>
+          <input matInput placeholder="Company Email" [(ngModel)]="company.email" name="email" required>
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error>
+            Company email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill>
+          <input matInput placeholder="Company Username" [(ngModel)]="company.username" name="username" required>
+          <mat-icon matSuffix>perm_identity</mat-icon>
+          <mat-error>
+            Company username is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFill>
+          <input matInput placeholder="Company Password" [(ngModel)]="company.password" name="password" required>
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error>
+            Company password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="!companyForm.form.valid" (click)="create()">Create</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

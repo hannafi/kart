@@ -1,0 +1,58 @@
+<div fxFill fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="80">
+    <mat-card-header>
+      <mat-card-title>Companies List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-table [dataSource]="companiesDataSource" matSort matSortActive="creationDate" matSortDisableClear
+                 matSortDirection="desc" >
+
+        <ng-container cdkColumnDef="name">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <a mat-button color="primary" aria-label="Edit Company" [matTooltip]="'Edit ' + row.name" [routerLink]="row.id">
+              {{row.name}}
+            </a>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="vat">
+          <mat-header-cell *cdkHeaderCellDef> Vat </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.vat}}</mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="phone">
+          <mat-header-cell *cdkHeaderCellDef> Phone </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.phone}}</mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="email">
+          <mat-header-cell *cdkHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.email}}</mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="creationDate">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Created At </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.creationDate | date:'d/M/yy H:mm':'UTC'}}</mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="enabled">
+          <mat-header-cell *cdkHeaderCellDef> Enabled </mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <mat-checkbox color="primary" [checked]="row.enabled" disabled></mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Header and Row Declarations -->
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[this.pageSize, this.pageSize * 2, this.pageSize * 4]"
+                     showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
