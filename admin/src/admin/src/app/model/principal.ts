@@ -1,4 +1,4 @@
 export class Principal {
-  email : string;
-  lastLoginDate : string;
+  email: string;
+  lastLoginDate: string;
 }

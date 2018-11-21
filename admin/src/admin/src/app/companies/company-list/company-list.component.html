@@ -1,5 +1,5 @@
 <div fxFill fxLayout="row" fxLayoutAlign="center center">
-  <mat-card fxFlex="80">
+  <mat-card fxFlex="80" class="mat-elevation-z10">
     <mat-card-header>
       <mat-card-title>Companies List</mat-card-title>
     </mat-card-header>
@@ -11,7 +11,7 @@
         <ng-container cdkColumnDef="name">
           <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name</mat-header-cell>
           <mat-cell *cdkCellDef="let row">
-            <a mat-button color="primary" aria-label="Edit Company" [matTooltip]="'Edit ' + row.name" [routerLink]="row.id">
+            <a mat-button color="primary" aria-label="Edit Company" [matTooltip]="'Edit ' + row.name" [routerLink]="'../edit/' + row.id">
               {{row.name}}
             </a>
           </mat-cell>

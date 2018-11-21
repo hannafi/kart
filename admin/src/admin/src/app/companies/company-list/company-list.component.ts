@@ -4,7 +4,6 @@ import {Company} from '../../model/company';
 import {AdminService} from '../../service/admin.service';
 import {merge} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-company-list',
@@ -13,13 +12,13 @@ import {Router} from '@angular/router';
 })
 export class CompanyListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['name', 'vat', 'phone', 'email', 'creationDate','enabled'];
+  displayedColumns: string[] = ['name', 'vat', 'phone', 'email', 'creationDate', 'enabled'];
   companiesDataSource: MatTableDataSource<Company> = new MatTableDataSource<Company>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  pageSize: number = 5;
+  pageSize = 5;
 
   constructor(private adminService: AdminService) {
   }
@@ -37,7 +36,8 @@ export class CompanyListComponent implements OnInit, AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.companiesDataSource.data = [];
-          return this.adminService.getCompanies(this.paginator.pageIndex, this.paginator.pageSize, this.sort.active + ',' + this.sort.direction);
+          return this.adminService.getCompanies(this.paginator.pageIndex,
+            this.paginator.pageSize, this.sort.active + ',' + this.sort.direction);
         }),
         map(page => {
           this.paginator.length = page.totalElements;

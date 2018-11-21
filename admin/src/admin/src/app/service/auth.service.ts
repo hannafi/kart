@@ -27,7 +27,7 @@ export class AuthService {
       });
   }
 
-  public login(username: string, password: string) : Observable<Token> {
+  public login(username: string, password: string): Observable<Token> {
     const headers = new HttpHeaders()
       .set('Authorization', 'Basic ' + btoa(environment.clientId + ':' + environment.clientSecret));
 
@@ -45,6 +45,10 @@ export class AuthService {
       );
   }
 
+  public recover(email: string) {
+    return this.http.post<void>(environment.adminEndpoint + '/recover', {email: email});
+  }
+
   public logout() {
     this.storageService.removeToken();
     this.next(null);
@@ -54,11 +58,11 @@ export class AuthService {
     this.principalSubject.next(user);
   }
 
-  hasToken() : boolean {
+  hasToken(): boolean {
     return !!this.storageService.getToken();
   }
 
-  getToken() : Token {
+  getToken(): Token {
     return this.storageService.getToken();
   }
 }

@@ -8,28 +8,26 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {LoginComponent} from './component/login/login.component';
-import {DashboardComponent} from './component/dashboard/dashboard.component';
-import {FormsModule} from '@angular/forms';
 import {NgProgressModule} from '@ngx-progressbar/core';
 import {NgProgressHttpModule} from '@ngx-progressbar/http';
 import {TokenInterceptor} from './security/token.interceptor';
 import {CompaniesModule} from './companies/companies.module';
+import {DashboardModule} from './dashboard/dashboard.module';
+import {AuthModule} from './auth/auth.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    DashboardComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppMaterialModule,
     BrowserAnimationsModule,
+    AppMaterialModule,
+    AuthModule,
     CompaniesModule,
+    DashboardModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     NgProgressModule.forRoot(),
     NgProgressHttpModule.forRoot(),

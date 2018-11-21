@@ -1,17 +1,16 @@
 package com.qarthinvest.kart.controller;
 
+import com.qarthinvest.kart.exception.AccountNotFoundException;
 import com.qarthinvest.kart.service.IAdminService;
 import com.qarthinvest.kart.service.IPrincipalService;
 import com.qarthinvest.kart.web.proxy.AdminProxy;
 import com.qarthinvest.kart.web.proxy.CommercialProxy;
 import com.qarthinvest.kart.web.proxy.CompanyProxy;
-import com.qarthinvest.kart.web.request.AddCommercialRequest;
-import com.qarthinvest.kart.web.request.AddCompanyRequest;
-import com.qarthinvest.kart.web.request.UpdateCommercialRequest;
-import com.qarthinvest.kart.web.request.UpdateCompanyRequest;
+import com.qarthinvest.kart.web.request.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -35,6 +34,11 @@ public class AdminController {
     @GetMapping(value = "/principal")
     public AdminProxy principal(Principal principal) {
         return principalService.getAdminPrincipal(principal);
+    }
+
+    @PostMapping(value = "/recover")
+    public void recover(@RequestBody final RecoverPasswordRequest request) throws AccountNotFoundException {
+        principalService.recoverAdminPassword(request);
     }
 
     @GetMapping(value = "/companies")
@@ -75,6 +79,12 @@ public class AdminController {
     @PutMapping(value = "/commercials/{commercial}")
     public void updateCommercial(@PathVariable String commercial, @RequestBody final UpdateCommercialRequest request) {
         adminService.updateCommercial(commercial, request);
+    }
+
+    @ResponseStatus(value = HttpStatus.PRECONDITION_FAILED)
+    @ExceptionHandler({AccountNotFoundException.class})
+    public void account() {
+        // Handling Account Not Found Exception.
     }
 
 }

@@ -17,6 +17,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import static com.qarthinvest.kart.util.Constants.ADMIN_API_ROOT;
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 

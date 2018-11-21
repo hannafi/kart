@@ -8,6 +8,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
+import static com.qarthinvest.kart.util.Constants.ADMIN_API_ROOT;
+import static com.qarthinvest.kart.util.Constants.COMMERCIAL_API_ROOT;
+import static com.qarthinvest.kart.util.Constants.COMPANY_API_ROOT;
+
 @Configuration
 @EnableResourceServer
 public class RessourceServerConfig extends ResourceServerConfigurerAdapter {
@@ -20,18 +24,19 @@ public class RessourceServerConfig extends ResourceServerConfigurerAdapter {
                 .requestMatchers()
                 .antMatchers(
                         Constants.ADMIN_API_ROOT + "/**",
-                        Constants.COMPANY_API_ROOT + "/**",
-                        Constants.COMMERCIAL_API_ROOT + "/**"
+                        COMPANY_API_ROOT + "/**",
+                        COMMERCIAL_API_ROOT + "/**"
                 )
                 .and()
                 .authorizeRequests()
-                .antMatchers(Constants.ADMIN_API_ROOT + "/**").hasAuthority(RoleType.ROLE_ADMIN.name())
+                .antMatchers(ADMIN_API_ROOT + "/recover").permitAll()
+                .antMatchers(ADMIN_API_ROOT + "/**").hasAuthority(RoleType.ROLE_ADMIN.name())
                 .and()
                 .authorizeRequests()
-                .antMatchers(Constants.COMPANY_API_ROOT + "/**").hasAuthority(RoleType.ROLE_MANAGER_COMPANY.name())
+                .antMatchers(COMPANY_API_ROOT + "/**").hasAuthority(RoleType.ROLE_MANAGER_COMPANY.name())
                 .and()
                 .authorizeRequests()
-                .antMatchers(Constants.COMMERCIAL_API_ROOT + "/**").hasAuthority(RoleType.ROLE_COMMERCIAL.name())
+                .antMatchers(COMMERCIAL_API_ROOT + "/**").hasAuthority(RoleType.ROLE_COMMERCIAL.name())
                 .and()
                 .authorizeRequests()
                 .anyRequest().hasAuthority(RoleType.ROLE_ADMIN.name());

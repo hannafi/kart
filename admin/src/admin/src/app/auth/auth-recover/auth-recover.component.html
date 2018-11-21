@@ -1,0 +1,22 @@
+<div fxFill fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="30" fxFlex.md="50" fxFlex.xs="80" class="mat-elevation-z10">
+    <mat-card-header>
+      <mat-card-title>Reset your password</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Enter your email address and we will send you a link to reset your password.
+      </p>
+      <form #recoverForm="ngForm" (submit)="recover()">
+        <mat-form-field fxFill>
+          <mat-icon matSuffix>perm_identity</mat-icon>
+          <input matInput placeholder="Enter your email address" [(ngModel)]="email" name="email" required>
+          <mat-error>
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button type="submit" color="primary" [disabled]="!recoverForm.form.valid">Send password reset email</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

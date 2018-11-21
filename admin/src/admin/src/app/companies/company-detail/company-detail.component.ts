@@ -21,23 +21,23 @@ export class CompanyDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: { company: Company }) => {
-      this.original = { ...data.company } ;
-      this.company = { ...data.company };
+      this.original = {...data.company};
+      this.company = {...data.company};
     });
   }
 
   update() {
     this.adminService.updateCompany(this.company).subscribe(company => {
-      this.original = { ...company } ;
-      this.company = { ...company };
+      this.original = {...company};
+      this.company = {...company};
       this.snackBar.open('Company ' + this.company.name + ' Updated', 'Update Success', {duration: 3000});
-    },() => {
+    }, () => {
       this.snackBar.open('Error Updating Company ' + this.company.name, 'Update Error', {duration: 3000});
     });
   }
 
   cancel() {
-    this.company = { ...this.original };
+    this.company = {...this.original};
   }
 
 }

@@ -4,17 +4,17 @@ import {CompanyListComponent} from './company-list/company-list.component';
 import {CompanyHomeComponent} from './company-home/company-home.component';
 import {CompanyDetailComponent} from './company-detail/company-detail.component';
 import {CompanyAddComponent} from './company-add/company-add.component';
-import {AuthGuard} from '../security/auth.guard';
 import {CompanyResolve} from '../service/company.resolve';
+import {AuthGuard} from '../security/auth.guard';
 
 const routes: Routes = [
   {
     path: 'companies',
     component: CompanyHomeComponent,
-    canActivate:[AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
-        path: '',
+        path: 'list',
         component: CompanyListComponent
       },
       {
@@ -22,11 +22,15 @@ const routes: Routes = [
         component: CompanyAddComponent
       },
       {
-        path: ':id',
+        path: 'edit/:id',
         component: CompanyDetailComponent,
         resolve: {
           company: CompanyResolve
         }
+      },
+      {
+        path: '**',
+        redirectTo: 'list'
       }
     ]
   }

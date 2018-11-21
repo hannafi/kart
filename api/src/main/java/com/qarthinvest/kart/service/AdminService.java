@@ -12,8 +12,6 @@ import com.qarthinvest.kart.web.request.AddCommercialRequest;
 import com.qarthinvest.kart.web.request.AddCompanyRequest;
 import com.qarthinvest.kart.web.request.UpdateCommercialRequest;
 import com.qarthinvest.kart.web.request.UpdateCompanyRequest;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,8 +24,6 @@ import static com.qarthinvest.kart.util.Utils.canUpdate;
 
 @Service
 public class AdminService implements IAdminService {
-
-    private static final Logger LOGGER = LogManager.getLogger(AdminService.class.getName());
 
     private final PasswordEncoder passwordEncoder;
     private final CommercialRepository commercialRepository;
@@ -42,19 +38,16 @@ public class AdminService implements IAdminService {
 
     @Override
     public Page<CompanyProxy> getCompanies(Pageable pageable) {
-        LOGGER.info("Fetching companies : {}", pageable);
         return companyRepository.findAll(pageable).map(CompanyProxy::new);
     }
 
     @Override
     public Optional<CompanyProxy> getCompany(String id) {
-        LOGGER.info("Fetching company with id {}", id);
         return companyRepository.findById(id).map(CompanyProxy::new);
     }
 
     @Override
     public void addCompany(AddCompanyRequest request) {
-        LOGGER.info("Adding new company");
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         Company company = new Company.Builder()
                 .id(Utils.id())
@@ -73,8 +66,6 @@ public class AdminService implements IAdminService {
 
     @Override
     public CompanyProxy updateCompany(String id, UpdateCompanyRequest request) {
-        LOGGER.info("Updating company : {}", id);
-
         Company company = companyRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("No company found for id " + id));
 
@@ -103,19 +94,16 @@ public class AdminService implements IAdminService {
 
     @Override
     public Page<CommercialProxy> getCommercials(Pageable pageable) {
-        LOGGER.info("Fetching commercials : {}", pageable);
         return commercialRepository.findAll(pageable).map(CommercialProxy::new);
     }
 
     @Override
     public Optional<CommercialProxy> getCommercial(String id) {
-        LOGGER.info("Fetching commercial with id {}", id);
         return commercialRepository.findById(id).map(CommercialProxy::new);
     }
 
     @Override
     public void addCommercial(AddCommercialRequest request) {
-        LOGGER.info("Adding new commercial to company {}", request.getCompany());
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         Commercial commercial = new Commercial.Builder()
                 .id(Utils.id())
@@ -135,8 +123,6 @@ public class AdminService implements IAdminService {
 
     @Override
     public void updateCommercial(String id, UpdateCommercialRequest request) {
-        LOGGER.info("Updating Commercial : {}", id);
-
         Commercial commercial = commercialRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("No commercial found for id " + id));
 

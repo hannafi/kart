@@ -22,9 +22,13 @@ import {
 import {CdkTableModule} from '@angular/cdk/table';
 import {LayoutModule} from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   exports: [
+    CommonModule,
+    FormsModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,

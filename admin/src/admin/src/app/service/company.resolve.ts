@@ -15,7 +15,7 @@ export class CompanyResolve implements Resolve<Company> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Company> | Observable<never> {
-    let id = route.paramMap.get('id');
+    const id = route.paramMap.get('id');
     return this.adminService.getCompany(id).pipe(
       take(1),
       mergeMap(company => {

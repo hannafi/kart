@@ -4,11 +4,11 @@ import {MatSnackBar} from '@angular/material';
 import {AuthService} from '../../service/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-auth-login',
+  templateUrl: './auth-login.component.html',
+  styleUrls: ['./auth-login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class AuthLoginComponent implements OnInit {
 
   username: string;
   password: string;
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.authService.login(this.username,this.password).subscribe(() => {
+    this.authService.login(this.username, this.password).subscribe(() => {
       this.authService.reloadPrincipal();
       this.router.navigate([this.returnUrl]);
     }, () => {

@@ -24,9 +24,9 @@ export class CompanyAddComponent implements OnInit {
 
   create() {
     this.adminService.addCompany(this.company).subscribe(() => {
-      this.router.navigate(['../'],{relativeTo: this.route});
+      this.router.navigate(['../'], {relativeTo: this.route});
       this.snackBar.open('Company ' + this.company.name + ' Added', 'Add Company Success', {duration: 3000});
-    },() => {
+    }, () => {
       this.snackBar.open('Error Adding Company ' + this.company.name, 'Add Company Error', {duration: 3000});
     });
   }
