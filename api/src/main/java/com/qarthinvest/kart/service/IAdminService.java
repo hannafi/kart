@@ -1,5 +1,6 @@
 package com.qarthinvest.kart.service;
 
+import com.qarthinvest.kart.domain.Company;
 import com.qarthinvest.kart.web.proxy.CommercialProxy;
 import com.qarthinvest.kart.web.proxy.CompanyProxy;
 import com.qarthinvest.kart.web.request.AddCommercialRequest;
@@ -34,7 +35,7 @@ public interface IAdminService {
      * Update company.
      */
     @Transactional(rollbackFor = Exception.class)
-    void updateCompany(String company, UpdateCompanyRequest request);
+    CompanyProxy updateCompany(String company, UpdateCompanyRequest request);
 
     /**
      * Get commercials.

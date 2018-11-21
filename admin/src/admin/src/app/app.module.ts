@@ -11,11 +11,10 @@ import {environment} from '../environments/environment';
 import {LoginComponent} from './component/login/login.component';
 import {DashboardComponent} from './component/dashboard/dashboard.component';
 import {FormsModule} from '@angular/forms';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgProgressModule} from '@ngx-progressbar/core';
 import {NgProgressHttpModule} from '@ngx-progressbar/http';
 import {TokenInterceptor} from './security/token.interceptor';
-import {CompaniesComponent} from './component/companies/companies.component';
+import {CompaniesModule} from './companies/companies.module';
 
 
 @NgModule({
@@ -23,13 +22,12 @@ import {CompaniesComponent} from './component/companies/companies.component';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    CompaniesComponent,
   ],
   imports: [
     BrowserModule,
-    FlexLayoutModule,
     AppMaterialModule,
     BrowserAnimationsModule,
+    CompaniesModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

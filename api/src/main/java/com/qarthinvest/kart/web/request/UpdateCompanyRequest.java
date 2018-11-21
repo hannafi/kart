@@ -6,6 +6,7 @@ public class UpdateCompanyRequest {
     private String vat;
     private String phone;
     private String email;
+    private boolean enabled;
 
     public String getName() {
         return name;
@@ -21,5 +22,9 @@ public class UpdateCompanyRequest {
 
     public String getEmail() {
         return email;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
     }
 }

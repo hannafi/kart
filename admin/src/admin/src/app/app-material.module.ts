@@ -21,9 +21,11 @@ import {
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import {LayoutModule} from '@angular/cdk/layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   exports: [
+    FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,

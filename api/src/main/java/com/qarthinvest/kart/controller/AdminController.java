@@ -53,8 +53,8 @@ public class AdminController {
     }
 
     @PutMapping(value = "/companies/{company}")
-    public void updateCompany(@PathVariable String company, @RequestBody final UpdateCompanyRequest request) {
-        adminService.updateCompany(company, request);
+    public CompanyProxy updateCompany(@PathVariable String company, @RequestBody final UpdateCompanyRequest request) {
+        return adminService.updateCompany(company, request);
     }
 
     @GetMapping(value = "/commercials")

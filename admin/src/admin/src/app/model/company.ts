@@ -7,4 +7,6 @@ export class Company {
   enabled : boolean;
   creationDate : string;
   lastLoginDate : string;
+  username : string;
+  password : string;
 }

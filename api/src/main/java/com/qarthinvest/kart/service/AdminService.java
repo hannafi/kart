@@ -72,7 +72,7 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public void updateCompany(String id, UpdateCompanyRequest request) {
+    public CompanyProxy updateCompany(String id, UpdateCompanyRequest request) {
         LOGGER.info("Updating company : {}", id);
 
         Company company = companyRepository.findById(id)
@@ -94,7 +94,11 @@ public class AdminService implements IAdminService {
             company.setPhone(request.getPhone());
         }
 
+        company.setEnabled(request.isEnabled());
+
         companyRepository.save(company);
+
+        return new CompanyProxy(company);
     }
 
     @Override
